@@ -1,0 +1,55 @@
+baseURL = "https://polarhardboiled.github.io/hugotest"
+title = "Hugo Test"
+languageCode = "fr-fr"
+paginate = 6
+enableRobotsTXT =  true
+buildDrafts =  false
+buildFuture =  false
+buildExpired =  false
+theme = "papermod"
+publishDir = "docs"
+
+[Params]
+  columns = 2
+  themeOptions = ["dark", "light", "hacker", "solarized", "kimbie"] # select options for site color theme
+  viewportSize = "widest"
+  enableUiAnimation = true
+  enableBreadcrumb = false
+  enableThemeChange = true
+  summaryShape = "classic"
+  logoText = "Hugo Test"
+  description = "Un Site pour tester Hugo et le theme switch"
+  hideSingleContentsWhenJSDisabled = false
+  minItemsToShowInTagCloud = 1 # Minimum items to show in tag cloud
+
+[outputFormats]
+
+  [outputFormats.SearchIndex]
+  mediaType = "application/json"
+  baseName = "searchindex"
+  isPlainText = true
+  notAlternative = true
+
+[outputs]
+home = [
+  "HTML",
+  "RSS",
+  "JSON",
+  "SearchIndex"
+]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      hardWraps = true
+      unsafe = true
+      xHTML = true
+  [markup.highlight]
+    codeFences = true
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = false
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2

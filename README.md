@@ -1,4 +1,7 @@
-# hugotest
+# Hugotest
+Pour tester le SSG Hugo
+
+le site est visible [ici](https://polarhardboiled.github.io/hugotest)
 
 ## Pour démarrer
 …or create a new repository on the command line
