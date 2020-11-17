@@ -7,7 +7,6 @@ buildDrafts =  false
 buildFuture =  false
 buildExpired =  false
 theme = "papermod"
-publishDir = "docs"
 
 [Params]
   columns = 2
