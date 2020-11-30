@@ -1,0 +1,10 @@
+<figure class="teaser lazyload{{ with .Get "class" }} {{.}}{{ end }}" data-expand="-110">
+    <video poster="{{ .Get "cover" }}" controls>
+      <source src="{{ .Get "src" }}" type="video/mp4">
+      <source src="{{ .Get "src" }}" type="video/webm">
+      <!-- Captions are optional -->
+    </video>
+      {{ if .Get "caption" }}
+    	<figcaption>{{ .Get "caption" | markdownify }}</figcaption>
+      {{ end }}
+</figure>

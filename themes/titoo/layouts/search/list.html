@@ -1,0 +1,16 @@
+{{ define "main" }}
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<div class="page-title">
+		<h1 itemprop="name">{{ .Title }}</h1>
+		</div>
+		<hr>
+		<div class="content">
+			{{ .Content }}
+		</div>
+		</main>
+	{{ partial "aside.html" . }}
+{{ end }}
+
+{{ define "footer" }}
+{{ partialCached "footer.html" . }}
+{{ end }}

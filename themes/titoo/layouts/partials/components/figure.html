@@ -1,0 +1,34 @@
+<figure{{ with .class }} class="{{ . }}"{{ end }}>
+  {{ if .link }}
+    <a href="{{ .link }}"{{ if .linktarget }} target="{{ .linktarget }}"{{ end }}{{ if eq .linktarget "_blank" }} rel="external noopener noreferrer"{{ end }} itemprop="url">
+      {{- if .lqipsrc -}}
+        <img class="lazyload blur-up" src="{{ .lqipsrc }}" data-src="{{ .src }}" {{ if or .alt .caption }}alt="{{ with .alt }}{{ . }}{{ else }}{{ .caption }}{{ end }}"{{ end }} itemprop="image">
+      {{- else -}}
+        <img class="lazyload blur-up" data-src="{{ .src }}" {{ if or .alt .caption }}alt="{{ if .alt }}{{ .alt }}{{ else }}{{ .caption }}{{ end }}"{{ end }} itemprop="image">
+      {{- end -}}
+    </a>
+  {{ else }}
+    {{- if .lqipsrc -}}
+      <img class="lazyload blur-up" src="{{ .lqipsrc }}" data-src="{{ .src }}" {{ if or .alt .caption }}alt="{{ with .alt }}{{ . }}{{ else }}{{ .caption }}{{ end }}"{{ end }} itemprop="image">
+    {{- else -}}
+      <img class="lazyload blur-up" data-src="{{ .src }}" {{ if or .alt .caption }}alt="{{ if .alt }}{{ .alt }}{{ else }}{{ .caption }}{{ end }}"{{ end }} itemprop="image">
+    {{- end -}}
+  {{ end }}
+  {{ if or (or .title .caption) .attr }}
+    <figcaption>
+      {{ with .title }}
+        <header itemprop="name"><b>{{ . }}</b></header>
+      {{ end }}
+      {{ if or .caption .attr }}
+        <small>
+          <span itemprop="description">{{ .caption }}</span>
+          {{ if .attrlink }}
+            <a href="{{ .attrlink }}">
+              {{ .attr }}
+            </a>
+          {{ end }}
+        </small>
+      {{ end }}
+    </figcaption>
+  {{ end }}
+</figure>

@@ -1,0 +1,6 @@
+<div class="site-branding">
+	<a href="{{.Site.BaseURL}}">{{ .Site.Title }}</a>
+</div>
+{{with .CurrentSection }}
+<a itemprop="url" href="{{ .Permalink | absLangURL }}">{{ .Name }}</a>
+{{ end }}

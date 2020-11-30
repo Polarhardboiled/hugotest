@@ -7,7 +7,7 @@
 <meta name=" robots" content="noindex, nofollow">
 {{- end -}}
 <!-- Title -->
-<title>{{ if .IsHome }}{{else}}{{ if .Title }}{{ .Title }} - {{ end }}{{end}}{{ .Site.Title }}</title>
+<title>{{ if .IsHome }}{{else}}{{ if .Title }}{{ .Title }} | {{ end }}{{end}}{{ .Site.Title }}</title>
 <!-- Meta -->
 <meta name="keywords" content="{{ if .Params.keywords -}}
     {{- range $i, $e := .Params.keywords }}{{ if $i }}, {{ end }}{{ $e }}{{ end }} {{- else }}
@@ -25,7 +25,6 @@
 <link href="{{ $stylesheet.Permalink }}" integrity="{{ $stylesheet.Data.Integrity }}" rel="preload stylesheet"
     as="style">
 <!-- Favicons -->
-<link rel="manifest" href="{{ "site.webmanifest" | absURL }}">
 <link rel="icon" href="{{- .Site.Params.assets.favicon | default "favicon.ico" | absURL -}}">
 <link rel="icon" type="image/png" sizes="16x16" href="
     {{- .Site.Params.assets.favicon16x16 | default "favicon-16x16.png" | absURL -}}">

@@ -1,0 +1,43 @@
+html {
+  font-size: 1em;
+  line-height: 1.6;
+  letter-spacing: .06em;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 100vw;
+  min-width: 240px;
+}
+
+pre, code {
+  font-family: $code-fonts;
+}
+
+pre {
+  tt {
+    font-family: $code-fonts;
+  }
+
+    code {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+code {
+  color: $text;
+  border-radius: 3px;
+  padding: 0 3px;
+  margin: 0 4px;
+  word-wrap: break-word;
+  letter-spacing: normal;
+}
+
+@include sass-themify() {
+#page {
+  background: sass-themify-get-color("background-color");
+  color: sass-themify-get-color("text-color");
+  }
+}

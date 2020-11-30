@@ -10,16 +10,30 @@ theme = "papermod"
 
 [Params]
   columns = 2
-  themeOptions = ["dark", "light", "hacker", "solarized", "kimbie"] # select options for site color theme
+  themeOptions = ["base","roseate","auburn","beryl"] # select options for site color theme
+  dateFormat = "2 January 2006"
+  dateform        = "2 Jan 2006"
+  dateformShort   = "2 Jan"
+  dateformNum     = "02-01-2006"
   viewportSize = "widest"
   enableUiAnimation = true
   enableBreadcrumb = false
-  enableThemeChange = true
   summaryShape = "classic"
   logoText = "Hugo Test"
   description = "Un Site pour tester Hugo et le theme switch"
   hideSingleContentsWhenJSDisabled = false
   minItemsToShowInTagCloud = 1 # Minimum items to show in tag cloud
+  enableSkinChange = true
+  
+  siteBrandFontSize = 1
+  fontUnit = "em"
+  largestFontSize = 2.5
+  smallestFontSize = 1
+
+[Params.style]
+    
+    # To Enable Skins change
+    presets = [ "base", "roseate", "auburn", "beryl" ]
 
 [outputFormats]
 

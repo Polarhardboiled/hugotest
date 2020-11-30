@@ -1,0 +1,18 @@
+<ul>
+	{{ range $index, $value := .Site.Params.Style.presets }}
+  		<button id="{{ . }}-btn" href="#" class="btn">{{ . }}</button>
+    {{ end }}
+</ul>
+
+<!--
+<hr/>
+<div id="spotlight">
+  <div id="text">Hello World</div>
+</div>
+
+<!-- noscript notice -->
+{{ if .Site.Params.hasNoscriptNotice }}
+  <noscript>
+    <p class="noscript">{{ T "noscript" }}</p>
+  </noscript>
+{{ end }}

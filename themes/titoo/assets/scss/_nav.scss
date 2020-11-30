@@ -1,0 +1,78 @@
+#nav {
+  overflow: hidden;
+  width: 100%;
+  border: 0;
+  -webkit-transition: top 0 ease-in-out;
+  transition: top 0 ease-in-out;
+
+  a {
+    line-height: 1.25em;
+
+    &.icon-btn:hover {
+      background: $light;
+    }
+  }
+
+  #nav-trigger {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &:target {
+    padding: 0;
+    background: $theme;
+    overflow: hidden;
+    -webkit-transition: top 0.5s cubic-bezier(0.0125, 0.025, 0, 1);
+    transition: top 0.5s cubic-bezier(0.0125, 0.025, 0, 1);
+
+    svg {
+      color: $background;
+    }
+
+    .nav-menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 0;
+      list-style: none;
+      padding: 0;
+
+      li {
+        text-align: center;
+        height: 8em;
+        flex-grow: 1;
+        -webkit-transition: background .2s ease-in-out;
+        transition: background 0.2s ease-in-out;
+
+        &:nth-child(5) {
+          font-size: 0.8em;
+        }
+
+        a {
+          font-family: $secondary-fonts;
+          font-weight: 700;
+          color: $background;
+        }
+
+        &:nth-child(odd) {
+          border-right: 1px dotted $background;
+          border-top: 1px dotted $background;
+        }
+
+        &:nth-child(even) {
+          border-top: 1px dotted $background;
+        }
+
+        &:hover, &.active {
+          background: $light;
+        }
+
+        svg {
+          padding-top: 1em;
+          font-size: 1.8em;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<div id="topbar" role="banner">
+    <a class="icon-btn" href="{{.Site.BaseURL}}"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-home3" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><title>Acceuil</title><path d="M32 19l-6-6v-9h-4v5l-6-6-16 16v1h4v10h10v-6h4v6h10v-10h4z"></path></svg></a>
+    {{ with .CurrentSection }}
+    <a class="icon-btn active" href="{{ .RelPermalink }}">
+    {{ with .Params.menu.main.Pre }}{{ . | safeHTML}}{{ end }}
+    </a>
+    {{ else }}
+    <a class="icon-btn" href="{{ .RelPermalink }}">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-price-tags" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M38.5 0h-12c-0.825 0-1.977 0.477-2.561 1.061l-14.879 14.879c-0.583 0.583-0.583 1.538 0 2.121l12.879 12.879c0.583 0.583 1.538 0.583 2.121 0l14.879-14.879c0.583-0.583 1.061-1.736 1.061-2.561v-12c0-0.825-0.675-1.5-1.5-1.5zM31 12c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"></path><path d="M4 17l17-17h-2.5c-0.825 0-1.977 0.477-2.561 1.061l-14.879 14.879c-0.583 0.583-0.583 1.538 0 2.121l12.879 12.879c0.583 0.583 1.538 0.583 2.121 0l0.939-0.939-13-13z"></path></svg></a>
+    {{ end }}
+    <a class="icon-btn" href="#nav">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-menu"><title>menu</title><path d="M2 6h28v6h-28zM2 14h28v6h-28zM2 22h28v6h-28z"></path></svg>
+    </a>
+</div>
+
+
+

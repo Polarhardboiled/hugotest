@@ -1,0 +1,20 @@
+{{ with $.Get "title" }}<h3>{{ . }}</h3>{{ end }}
+{{ with $.Get "content"}}<h4>{{ . | markdownify }}</h4>{{ end }}
+{{ $seed := .Get "src" }}
+{{ $unique := delimit (shuffle (split (md5 $seed) "" )) "" }}
+  {{ range $image := (.Page.Resources.ByType "image").Match (printf "%s*" (.Get "src")) }}
+  {{ $src := $image }}
+  {{ $thumb := .Resize "500x" }}
+  <div class="cssbox">
+    <a id="{{ $unique | safeHTMLAttr }}" href="{{ $src.RelPermalink }}">
+      <img 
+      class="lazyload blur-up cssbox_thumb"
+      src="{{ $thumb.RelPermalink }}"
+      >
+      <span class="cssbox_full">
+        <img src="{{ $src.RelPermalink }}" />
+      </span>
+    </a>
+    <a class="cssbox_close" href="#void"></a>
+</div>
+  {{ end }}

@@ -1,0 +1,14 @@
+// Global Themes variables.
+$theme-transition-duration: 1.5s;
+
+@import 'base';
+@import 'roseate';
+@import 'auburn';
+@import 'beryl';
+
+$themeCollection: (
+  base: $base,
+  roseate: $roseate,
+  auburn: $auburn,  
+  beryl: $beryl,
+) !default;

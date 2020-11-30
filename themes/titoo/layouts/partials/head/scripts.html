@@ -1,0 +1,18 @@
+{{ $import := resources.Get "/js/vendor/fetch-inject.min.js" }}
+{{ $baseof := resources.Get "/js/baseof.js" | resources.ExecuteAsTemplate "baseof.js" . }}
+<script async integrity="{{ ($import | resources.Fingerprint "sha512").Data.Integrity }}">
+{{- $import.Content | safeJS -}}
+</script>
+<script async integrity="{{ ($baseof | resources.Fingerprint "sha512").Data.Integrity }}">
+{{- $baseof.Content | safeJS -}}
+</script>
+{{ if $.Param "searchform" -}}
+{{ $flexsearch := resources.Get "js/lib/flexsearch.min.js" | fingerprint -}}
+<script src="{{ $flexsearch.RelPermalink }}" defer></script>
+{{ $search := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" . | minify | fingerprint -}}
+<script src="{{ $search.RelPermalink }}" defer></script>
+{{ end }}
+{{ if $.Param "enableSkinChange" }}
+{{ $skins := resources.Get "js/skins.js" | fingerprint -}}
+<script src="{{ $skins.RelPermalink }}" defer></script>
+{{ end }}

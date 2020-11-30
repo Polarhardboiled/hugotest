@@ -1,0 +1,7 @@
+{{ $style := resources.Get "scss/style.scss" | resources.ExecuteAsTemplate "css/style.css" . | toCSS | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $style.Permalink }}" {{ printf "integrity=%q" $style.Data.Integrity | safeHTMLAttr }} crossorigin="anonymous">
+    
+<!-- Custom css -->
+	{{- range .Site.Params.customCSS }}
+	<link rel="stylesheet" href="{{ . | absURL }}" {{ printf "integrity=%q" $style.Data.Integrity | safeHTMLAttr }} crossorigin="anonymous">
+	{{- end }}

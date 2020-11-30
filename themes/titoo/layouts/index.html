@@ -1,0 +1,30 @@
+{{ define "main" }}
+	<div id="spotlight">
+		<div id="home-center">
+			<h1 id="home-title">{{ .Site.Title }}</h1>
+			{{- with .Site.Params.homeSubtitle }}
+			<p id="home-subtitle">{{.}}</p>
+			{{- end }}
+		<ul class="nav-menu">
+		{{- range .Site.Menus.main }}
+			<li><a itemprop="url" href="{{ .URL }}">{{ if .Pre }}{{ .Pre | safeHTML }}{{ end }}<br>{{ .Name }}</a></li>
+        {{ end }}
+    	</ul>
+			{{- with .Site.Params.social }}
+			<div id="home-social">
+				{{ partialCached "social-icons.html" . }}
+			</div>
+			{{- end }}
+
+		</div>
+
+		<div id="home-footer">
+			{{ partialCached "footer.html" . }}
+		</div>
+
+		
+  <div id=skins-switch>
+        {{ partialCached "skins-opt.html" . }}
+      </div>
+	</div>
+{{ end }}

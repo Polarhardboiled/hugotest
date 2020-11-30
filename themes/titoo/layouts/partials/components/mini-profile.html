@@ -1,0 +1,13 @@
+{{ with .Params.authors }}
+<div class="mini-profile" itemscope itemtype="http://schema.org/Person" /> {{ range $ind,$val := . }} {{$author := $val | urlize }} {{- with $.Site.GetPage "taxonomyTerm" $author}} {{ if .Resources.GetMatch "avatar" }} {{ $image100 := (.Resources.GetMatch "avatar").Fill "100x100 Center" }}
+<div class="avatar">
+    <a itemprop="name" rel="author" href="{{ . }}"> <img itemprop="thumbnailUrl" class="lazyload blur-up" data-src="{{ $image100.RelPermalink }}" alt="{{ .Name | plainify }}"> {{ end }} </a>
+</div>
+<div class="bio">
+    <h4 class="main-title">{{ .Params.name }}</h4>
+    <h6 class="sub-title">{{ .Params.description }}</h6>
+</div>
+<p>{{ .Params.bio }}</p> {{- with .Params.social }}
+ {{ end }} {{ end }} {{ end }}
+</div>
+{{ end }}
