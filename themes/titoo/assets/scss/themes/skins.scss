@@ -26,3 +26,5 @@ $theme-map: (
     'dark-color': #271c19
   )
 );
+
+@include sass-themify-init($theme-map);

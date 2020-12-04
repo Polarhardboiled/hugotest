@@ -63,10 +63,3 @@ p.img-404 {
     }
   }
 }
-
-@include sass-themify() {
-#spotlight {
-  color: sass-themify-get-color("text-color");
-  background: sass-themify-get-color("background-color");
-  }
-}

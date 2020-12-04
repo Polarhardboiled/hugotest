@@ -17,9 +17,14 @@
 </a>
 {{- partial "extend_footer.html" . -}}
 {{ if in site.Params.mainSections .Type }}
+{{- if not .Site.Params.assets.disableFingerprinting }}
 {{- $highlight := slice (resources.Get "js/highlight.min.js") | resources.Concat "assets/js/highlight.js" | minify | fingerprint }}
 <script defer src="{{ $highlight.Permalink }}" integrity="{{ $highlight.Data.Integrity }}"
     onload="hljs.initHighlightingOnLoad();"></script>
+{{- else}}
+{{- $highlight := slice (resources.Get "js/highlight.min.js") | resources.Concat "assets/js/highlight.js" | minify }}
+<script defer src="{{ $highlight.Permalink }}" onload="hljs.initHighlightingOnLoad();"></script>
+{{- end}}
 {{- end }}
 <script>
     window.onload = function () {
@@ -63,12 +68,6 @@
             localStorage.setItem("pref-theme", 'dark');
         }
     })
-
-</script>
-{{- else -}}
-{{/*  case where owner disables theme button after deployment, this resets the stored theme  */}}
-<script>
-    localStorage.removeItem("pref-theme");
 
 </script>
 {{- end }}

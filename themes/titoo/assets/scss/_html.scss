@@ -1,14 +1,7 @@
-@include sass-themify-init($theme-map);
-
 html {
   font-size: 1em;
   line-height: 1.6;
   letter-spacing: .06em;
   scroll-behavior: smooth;
   font-family: $fonts;
-}
-@include sass-themify() {
-html { color: sass-themify-get-color("text-color");
-  background: sass-themify-get-color("background-color");
-  }
 }

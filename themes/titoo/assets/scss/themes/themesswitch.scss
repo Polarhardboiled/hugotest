@@ -1,0 +1,65 @@
+$base-theme: "base-theme";
+$roseate-theme: "roseate-theme";
+$beryl-theme: "beryl-theme";
+$auburn-theme: "auburn-theme";
+
+$theme-color: "theme-color";
+$text-color: "text-color";
+$background-color: "background-color";
+$dark-color: "dark-color";
+/* ...other color keys... */
+
+
+$themes: (
+  $base-theme:(
+    $theme-color: #cc6666,
+    $text-color: #444,
+    $background-color: #f9f4ed,
+    $dark-color: #33272a
+  ),
+  $roseate-theme:(
+    $theme-color: #ff8ba7,
+    $background-color: #faeee7,
+    $text-color: #594a4e,
+    $dark-color: #33272a
+  ),
+  $beryl-theme:(
+    $theme-color: #eebbc3,
+    $background-color: #232946,
+    $text-color: #b8c1ec,
+    $dark-color: #232946
+  ),
+  $auburn-theme: (
+    $theme-color: #ffc0ad,
+    $background-color: #55423d,
+    $text-color: #fff3ec,
+    $dark-color: #271c19
+  )
+);
+
+@mixin themeProperty($theme, $property, $color, $additionalPropertiesPositionIsFront, $additionalProperties) {
+  @if $additionalPropertiesPositionIsFront {
+    #{$property}: unquote($additionalProperties + ' ' + map-get($theme, $color));
+  } @else {
+    #{$property}: unquote(map-get($theme, $color) + ' ' + $additionalProperties);
+  }
+}
+
+@mixin theme($property, $color, $additionalPropertiesPositionIsFront: false, $additionalProperties: '') {
+  $base: map-get($themes, $base-theme);
+  $roseate: map-get($themes, $roseate-theme);
+  $beryl: map-get($themes, $beryl-theme);
+  $auburn: map-get($themes, $auburn-theme);
+  
+  @include themeProperty($base, $property, $color, $additionalPropertiesPositionIsFront, $additionalProperties);
+
+  @media (prefers-color-scheme: roseate) {
+    @include themeProperty($roseate, $property, $color, $additionalPropertiesPositionIsFront, $additionalProperties);
+  }
+   @media (prefers-color-scheme: beryl) {
+    @include themeProperty($beryl, $property, $color, $additionalPropertiesPositionIsFront, $additionalProperties);
+  }
+  @media (prefers-color-scheme: auburn) {
+    @include themeProperty($auburn, $property, $color, $additionalPropertiesPositionIsFront, $additionalProperties);
+  }
+}

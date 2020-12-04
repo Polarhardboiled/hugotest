@@ -20,7 +20,7 @@
 </head>
 
 {{- $exclude := slice "home" "404" -}}
-<body id="page" class="theme-{{ index .Site.Params.themeOptions 0}}{{ if not (in $exclude .Kind) }} sidebar{{ end }}">
+<body id="page" {{ if not (in $exclude .Kind) }}class="sidebar"{{ end }}>
 	{{ block "header" . -}}{{ end -}}
 	{{ block "main" . -}}{{ end -}}
 	{{ block "footer" . -}}{{ end }}
