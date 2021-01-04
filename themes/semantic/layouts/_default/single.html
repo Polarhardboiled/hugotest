@@ -1,0 +1,17 @@
+{{ define "header" }}
+{{ partial "header.html" . }}
+{{ end }}
+
+{{ define "main" }}
+<main>
+	{{ if .Content }}
+<article>
+	{{ .Content }}
+</article>
+	{{ end }}
+</main>
+{{ end }}
+
+{{ define "footer" }}
+{{ partialCached "footer.html" . }}
+{{ end }}

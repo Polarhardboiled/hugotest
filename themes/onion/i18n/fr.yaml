@@ -1,0 +1,105 @@
+## UI
+filter-reset:
+  other: Tout
+
+show-more:
+  other: Plus
+
+next:
+  other: Suivant
+
+previous:
+  other: Précédent
+
+search:
+  other: Recherche
+
+
+## social sharing
+
+share:
+  other: Partage
+
+share-twitter:
+  other: Twitter
+
+share-facebook:
+  other: Facebook
+
+share-email:
+  other: Par email
+
+
+## post details
+
+description:
+  other: Résumé
+
+license:
+  other: License
+
+rating:
+  other: Rating
+
+tags:
+  other: Tags
+
+contents:
+  other: Contenu
+
+notice-outdated:
+  other: il y a longtemps
+
+created-date:
+  other: Produit
+
+read-date:
+  other: Lu
+
+publish-date:
+  other: Publié le
+
+modified-date:
+  other: Mis à Jour le
+
+post-details:
+  other: Détails
+
+post-meta:
+  other: Meta
+
+in-series:
+  other: Dans cette Série
+
+publication-details:
+  other: Détails de Publication
+
+title:
+  other: Titre
+
+author:
+  other: Auteur
+
+published:
+  other: Publié le
+
+publisher:
+  other: Editeur
+
+pages:
+  other: Pages
+
+
+## github-content
+
+hosted-on-github:
+  other: Hébergé sur GitHub
+
+github-repository:
+  other: Repository
+
+github-license:
+  other: License
+
+github-last-pushed:
+  other: Last Pushed

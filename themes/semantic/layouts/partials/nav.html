@@ -1,0 +1,39 @@
+<nav>
+	{{ $isHome := .Page.IsHome }}
+    <a href="{{.Site.BaseURL}}" accesskey="h"><img alt="{{ .Site.Title }}" src="{{ .Site.Params.logo | absURL }}" height="70"></a>
+    <ul>
+        {{ if .Site.Menus.main }}
+        {{ range .Site.Menus.main }}
+        {{ if .HasChildren }}
+        <li><a itemprop="url" href="{{ .URL }}">
+            {{ .Pre }}
+            {{ .Name }}
+            {{ .Post }}
+        </a>
+        <ul>
+            {{ range .Children }}
+            <!-- TODO: style children different then parents-->
+            <li><a href="{{ .URL }}">
+                {{ .Pre }}
+                {{ .Name }}
+                {{ .Post }}
+            </a></li>
+            {{ end }}
+        </ul>
+            </li>
+            {{ else }}
+            <li><a href="{{ .URL }}">
+                {{ .Pre }}
+                {{ .Name }}
+                {{ .Post }}
+            </a></li>
+            {{ end }}
+            {{ end }}
+            {{ else }}
+            <!-- use default menu -->
+            {{ if not $isHome }}
+            <li><a href="{{ "" | relLangURL }}">{{ i18n "nav_main" . }}</a></li>
+            {{ end }}
+{{ end }}
+        </ul>
+</nav>

@@ -1,0 +1,47 @@
+{{ define "main" -}}
+	<article class="h-entry {{ with .Params.cssclass }} {{ . }} {{ end }}{{ if .Draft }} draft {{ end }} {{ .Type }}">
+		{{- $cover := "" -}}
+		{{- if .Params.cover }}
+			{{ $cover = .Params.cover }}
+		{{ else }}
+			{{ $cover = (.Resources.ByType "image").GetMatch "*__cover*" }}
+		{{ end -}}
+		{{- if $cover -}}
+		<div class="cover">
+			{{ partial "render-image" (dict "Page" .Page "Destination" $cover )}}
+		</div>
+		{{- end -}}
+		<h1 class="title"><a href="#">{{ with .Title }}{{ . }}{{ end }}</a></h1>
+		<header>
+			<div class="details">
+				{{ if .Params.Summary }}
+					<div class="summary">
+						{{ .Params.Summary | plainify | markdownify }}
+					</div>
+				{{ end }}
+				{{ if and (ne .Site.Params.show_share false) (ne .Params.show_share false) }}
+					{{ partial "sharing.html" . }}
+				{{ end }}
+			</div>
+			{{ if and (ne .Site.Params.show_meta false) (ne .Params.show_meta false) -}}{{ partial "meta" . }}{{ end }}
+		</header>
+		<div class="entry-content" itemprop="articleBody">
+			{{- if eq .Type "preformatted" -}}
+				<pre>{{ .RawContent | safeHTML }}</pre>
+			{{- else if eq .Type "ephemera" -}}
+				{{ .RawContent | markdownify | safeHTML }}
+			{{- else -}}
+				{{ .Content }}
+			{{- end -}}
+		</div>
+	</article>
+	{{ if and (eq .Site.Params.show_comments true) (ne .Params.show_comments false) -}}
+		<section class="comments">
+		{{ if .Params.disqusShortname }}
+			{{ template "_internal/disqus.html" . }}
+		{{ else }}
+			► Error: Comments enabled but disqusShortname is missing.
+		{{ end }}
+		</section>
+	{{- end -}}
+{{- end }}

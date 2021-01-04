@@ -1,0 +1,61 @@
+<article class="{{ with .Params.cssclass }} {{ . }} {{ end }}{{ if .Draft }} draft {{ end }} {{ .Type }}" lang="{{ with .Lang }}{{ . }}{{ end }}" data-tags="{{ with .Params.tags }}{{ delimit . " " }}{{ end }}">
+{{- if eq .Type "preformatted" -}}
+	<pre>{{ .RawContent | safeHTML }}</pre>
+{{- else if eq .Type "ephemera" -}}
+	{{ .RawContent | markdownify | safeHTML }}
+{{- else -}}
+	<a {{ with .Params.directURL -}}
+		{{ with $.Page.Resources.GetMatch . }}
+			{{ printf "href=%s title=' %s'" .RelPermalink .Name | safeHTMLAttr  }}
+		{{ else }}
+			{{ $url := urls.Parse . }}
+			{{ printf "href=%s target=_blank title=' %s'" . $url.Host | safeHTMLAttr  }}
+		{{ end }}
+	{{- else -}}
+		{{ printf "href=%s" .RelPermalink | safeHTMLAttr  }}
+	{{- end -}}>
+		{{- $cover := "" -}}
+		{{- if .Params.cover_listing }}
+			{{ $cover = .Params.cover_listing }}
+		{{ else if .Params.cover }}
+			{{ $cover = .Params.cover }}
+		{{ else }}
+			{{ $cover = (.Resources.ByType "image").GetMatch "*__cover*" }}
+		{{ end -}}
+		{{- if $cover -}}
+		<figure class="thumbnail">
+			{{ partial "render-image" (dict "Page" .Page "Destination" $cover )}}
+		</figure>
+		{{- end -}}
+		<time class="time dt-published" datetime="{{ .Date.Format "2006-01-02" }}">
+			{{- if .Params.dateCreated -}}
+				{{- .Params.dateCreated -}}
+			{{- else if .Params.dateRead -}}
+				{{- .Params.dateRead -}}
+			{{- else -}}
+				{{- if isset $.Site.Params "date_format" -}}
+					{{- .Date.Format $.Site.Params.date_format -}}
+				{{- else -}}
+					{{- .Date.Format "2006-01-02" -}}
+				{{- end -}}
+			{{- end -}}
+		</time>
+		<h3 class="title">{{ .Title }}</h3>
+		{{- with .Params.Author }}
+			<!-- <p class="author">{{ . }}</p> -->
+		{{- end -}}
+		<p class="summary">
+		{{- with .Description }}
+			{{ . | markdownify | plainify  }}
+		{{- else }}
+			{{ .Summary | markdownify | plainify  }}
+		{{- end -}}</p>
+		{{- with .Params.Rating }}
+			<p class="rating">{{ range seq (int . ) }}★{{ end }}</p>
+		{{- end -}}
+	</a>
+		{{- if .Params.Tags -}}
+			<p class="tags">{{ partial "tags-list" . }}</p>
+		{{- end -}}
+{{- end -}}
+</article>

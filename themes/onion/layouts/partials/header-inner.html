@@ -1,0 +1,11 @@
+<h1>
+	<a href="{{ "/" | relLangURL }}">
+		{{- if site.Params.Logo }}
+			<img alt="{{ .Site.Title }}" src="{{ .Site.Params.logo | absURL }}">
+		{{- else -}}
+			{{ site.Title }}
+		{{- end -}}
+	</a>
+	{{- with site.Params.Description }}<span class="description">{{ . }}</span>{{ end -}}
+</h1>
+{{ partialCached "menu-main" . }}

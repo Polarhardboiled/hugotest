@@ -1,0 +1,10 @@
+{{ define "main" }}
+	<section class="articles-list stack">
+		{{ .Content }}
+		{{ if gt (len .Data.Pages) 0}}
+			{{ range .Data.Pages }}
+				{{ partial "article" . }}
+			{{ end }}
+		{{ end }}
+	</section>
+{{ end }}

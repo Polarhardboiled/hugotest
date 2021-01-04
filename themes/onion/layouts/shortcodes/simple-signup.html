@@ -1,0 +1,12 @@
+{{- $action := (.Get "action") -}}
+{{- $name := (.Get "name") -}}
+{{- $label := (.Get "label") -}}
+{{- $placeholder := (.Get "placeholder") -}}
+{{- $subscribe := (.Get "subscribe") -}}
+<div class="simple-signup">
+	<form action="{{ with $action }}{{ . | safeHTMLAttr }}{{ end }}" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+		{{ with $label }}<label for="mce-EMAIL">{{ . | markdownify | safeHTML }}</label>{{ end }}
+		<input id="mce-EMAIL" type="email" name="{{ with $name }}{{ . | safeHTMLAttr }}{{ end }}" class="email" placeholder="{{ with $placeholder }}{{ . | safeHTMLAttr }}{{ end }}" autocomplete="off" required value="" >
+		<input type="submit" name="subscribe" class="button" value="{{ with $subscribe }}{{ . | safeHTMLAttr }}{{ end }}" >
+	</form>
+</div>

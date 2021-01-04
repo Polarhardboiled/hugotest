@@ -1,0 +1,117 @@
+<!-- layouts/shortcodes/articles-filter.html -->
+{{- $class := (.Get "class") -}}
+{{- $filter := "articles-filterable" -}}
+{{- $tagfilter := (.Get "tagfilter") -}}
+<!-- if not (in $site.Params.disableKinds "taxonomy")  -->
+<div id="articles-filter" class="noscript {{ with $class }}{{ $class }}{{ end }}">
+	<div>
+	<a id="articles-filter__reset" class="tag" data-filter="articles-filterable" data-active="true" data-reset="true" href="#articles-filter">{{ (i18n "filter-reset") }}</a>
+	{{- range site.Taxonomies.tags.Alphabetical -}}
+		{{- if not (in (slice $tagfilter) .Term) -}}
+		<a href="{{ .Page.Permalink }}" class="tag filter-{{ .Term | urlize }}" data-filter-tag="{{ .Term | urlize }}" data-count="{{ .Count }}">{{ if (i18n .Term ) }}{{ (i18n .Term ) }}{{ else }}{{ .Term }}{{ end }}</a>
+		{{- end -}}
+	{{- end -}}
+	</div>
+</div>
+<script type="text/javascript">
+	// code based on https://codepen.io/brendanfalkowski/pen/QwdKMK
+	/*
+	[data-visibility='on'] {
+		opacity: 1;
+		-webkit-transition: all 0.3s linear;
+		transition        : all 0.3s linear;
+	}
+	[data-visibility='off'] {
+		opacity: 0.1 !important;
+		pointer-events: none !important;
+		-webkit-user-select: none !important;
+		user-select        : none !important;
+		-webkit-transition: all 0.3s linear;
+		transition        : all 0.3s linear;
+	}
+	*/
+
+	document.getElementById('articles-filter').classList.remove('noscript');
+
+	filters = [];
+
+	document.querySelectorAll('#articles-filter .tag').forEach(button => {
+		button.addEventListener('click', function (e) {
+			e.preventDefault(); // do not go to href
+
+			var button = e.target;
+			var filter = {{ $filter }}
+
+			if (button.getAttribute('data-reset') === 'true') {
+				tag_reset(filter);
+			}
+			else if (button.getAttribute('data-active') === 'true') {
+				var tag = button.getAttribute('data-filter-tag');
+				filters = filters.filter(val => val !== tag);
+				button.setAttribute('data-active', 'false');
+				tag_toggle(filter, tag);
+				if (filters.length < 1) {
+					document.getElementById('articles-filter__reset').setAttribute('data-active', 'true');
+				}
+			}
+			else {
+				var tag = button.getAttribute('data-filter-tag');
+				filters.push(tag);
+				button.setAttribute('data-active', 'true');
+				tag_toggle(filter, tag);
+				if (filters.length > 0) {
+					document.getElementById('articles-filter__reset').setAttribute('data-active', 'false');
+				}
+			}
+
+			// scroll back to the first visible post
+			if (typeof document.querySelector('[data-visibility="on"]') !== 'undefined') {
+					setTimeout(function(){
+						// will throw error if no object with data-visibility=on exists
+						var onfromtop = document.querySelector('[data-visibility="on"]').getBoundingClientRect().top + window.scrollY;
+				// if (onfromtop > 0) {
+						window.scroll({
+							top: onfromtop - parseInt(document.querySelector('#articles-filter').getBoundingClientRect()['height']),
+							behavior: 'smooth'
+						});
+					}, 600);
+				// }
+			}
+			// this is really affected by performance, it should be a little bigger than the transition speed
+		});
+	});
+
+	function tag_toggle(filter, tag) {
+		var items = document.querySelectorAll('.' + filter + ' article, .' + filter + ' summary');
+
+		for (var i = 0; i < items.length; i++) {
+			var itemTags = items[i].getAttribute('data-tags');
+			if (itemTags != null) {
+				if (!filters.some(v=> itemTags.indexOf(v) >= 0)) {
+					items[i].setAttribute('data-visibility', 'off');
+				}
+				else {
+					items[i].setAttribute('data-visibility', 'on');
+				}
+			}
+			if (filters.length === 0) {
+				items[i].setAttribute('data-visibility', 'on');		
+			}
+		}
+	}
+
+	function tag_reset(filter) {
+		filters = [];
+		var items = document.querySelectorAll('.' + filter + ' article, .' + filter + ' summary');
+
+		for (var i = 0; i < items.length; i++) {
+			items[i].setAttribute('data-visibility', 'on');
+		}
+
+		var tags = document.querySelectorAll('#articles-filter .tag');
+		for (var i = 0; i < tags.length; i++) {
+			tags[i].setAttribute('data-active', 'false');
+		}
+		document.getElementById('articles-filter__reset').setAttribute('data-active', 'true');
+	}
+</script>

@@ -1,0 +1,11 @@
+{{ if .Resources.GetMatch "header" }}
+  {{ $image100 := (.Resources.GetMatch "header").Fill "100x100 Center" }}
+  <figure>
+    <img
+      itemprop="thumbnailUrl"
+      class=""
+      data-src="{{ $image100.RelPermalink }}"
+      alt="{{ .Name | plainify }}" 
+      >
+  </figure>
+{{ end }}

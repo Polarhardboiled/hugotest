@@ -6,9 +6,14 @@ tags:
   - "Translation"
   - "i18n"
   - "Hugo"
+cover: hannah-wright.jpg
 featured:
+  url: featured.jpg
   alt: Translation support
   previewOnly: true
+resources:
+  - src: hannah-wright.jpg
+    name: header
 ---
 
 With Hugo i18n possibilities, you can easily have a website in your language. This Hugo theme is ready to be translated into other languages. You can create a special file that contains translated text to show the visitor instead of English.

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="{{.Site.LanguageCode}}">
+<head>
+	{{ block "head" . }}
+		{{- partial "head/styles.html" . }}	
+		{{- partial "head/favicons.html" . }}	
+	{{ end }}
+	<title>{{ block "title" . }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+
+	{{ block "head_resources" . }}
+    <!-- Use this block to link to further resources like .js or .css files. -->
+    {{ end }}
+</head>
+    <body>
+	{{ block "header" . -}}{{ end -}}
+	{{ block "main" . -}}{{ end -}}
+	{{ block "footer" . -}}{{ end }}
+    </body>
+</html>

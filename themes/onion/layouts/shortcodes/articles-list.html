@@ -1,0 +1,24 @@
+{{- $types := (.Get "types") -}}
+{{- $tag := (.Get "tag") -}}
+{{- $tagfilter := (.Get "tagfilter") -}}
+{{- $items := or (.Get "items") 12 -}}
+{{- $id := (.Get "id") -}}
+{{- $class := (.Get "class") -}}
+{{- $title := (.Get "title") -}}
+{{- $closed := (.Get "closed") -}}
+{{- $more := (.Get "more") -}}
+{{- $articles := where (where .Site.AllPages ".IsPage" true) ".Lang" "eq" .Site.Language.Lang -}}
+{{- $articles := $articles | union (where .Site.AllPages ".Params.crosspost" true) -}}
+{{- $articles := union (where $articles ".Type" "in" $types) (where $articles ".Params.tags" "intersect" (slice $tag)) -}}
+{{- $articles := $articles | symdiff (where $articles ".Params.tags" "intersect" (slice $tagfilter)) -}}
+{{- $articles_count := len $articles -}}
+{{- if gt $articles_count 0 -}}
+<details id="{{ with $id }}{{ . }}{{ end }}" class="articles-list {{ with $class }}{{ . }}{{ end }}" data-articles-count="{{ $articles_count }}" {{ if ne $closed "true" }}open{{ end }}>
+<summary data-tags=""><h2>{{ $title | plainify }}</h2><span class="more">({{ $articles_count }}){{ with $more }} & <a href="{{ . | safeHTMLAttr }}">{{ i18n "show-more" }}</a>{{ end }}</span></summary>
+<div class="wrapper">
+{{- range first $items $articles.ByDate.Reverse -}}
+			{{ partial "article" . }}
+{{- end -}}
+</div>
+</details>
+{{- end -}}

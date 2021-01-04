@@ -1,0 +1,105 @@
+## UI
+filter-reset:
+  other: Everything
+
+show-more:
+  other: More
+
+next:
+  other: Next
+
+previous:
+  other: Previous
+
+search:
+  other: Search
+
+
+## social sharing
+
+share:
+  other: Share
+
+share-twitter:
+  other: Twitter
+
+share-facebook:
+  other: Facebook
+
+share-email:
+  other: By email
+
+
+## post details
+
+description:
+  other: Summary
+
+license:
+  other: License
+
+rating:
+  other: Rating
+
+tags:
+  other: Tags
+
+contents:
+  other: Contents
+
+notice-outdated:
+  other: years ago
+
+created-date:
+  other: Produced
+
+read-date:
+  other: Read
+
+publish-date:
+  other: Published
+
+modified-date:
+  other: Updated
+
+post-details:
+  other: Post details
+
+post-meta:
+  other: Meta
+
+in-series:
+  other: In this Series
+
+publication-details:
+  other: Publication details
+
+title:
+  other: Title
+
+author:
+  other: Author
+
+published:
+  other: Published
+
+publisher:
+  other: Publisher
+
+pages:
+  other: Pages
+
+
+## github-content
+
+hosted-on-github:
+  other: Hosted on GitHub
+
+github-repository:
+  other: Repository
+
+github-license:
+  other: License
+
+github-last-pushed:
+  other: Last Pushed

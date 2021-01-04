@@ -1,4 +1,0 @@
-<ul class="social"> {{ range . -}}
-    <li><a href="{{ .url | safeURL }}" target="_blank" rel="noopener me" title="{{ .name | humanize }}">{{ partial "svg.html" . }}</a>
-    </li> {{- end -}}
-</ul>

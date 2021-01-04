@@ -3,6 +3,10 @@ title: Featured Images
 description: "In this page, we will explain what featured images are and show you some examples how to add a featured \
 image for a page."
 date: 2019-09-12
+cover: ilse-orsel.jpg
+resources:
+  - src: ilse-orsel.jpg
+    name: header
 ---
 
 Featured image is the image that appears on summaries at the list pages and the top of content pages. Every content page
@@ -19,8 +23,7 @@ This theme uses page bundles for featured images. There are two main different w
 
 ### Option 1. Put `featured.*` or `thumbnail.*` image in the page bundle
 
-This theme considers `featured` or `thumbnail` image in any popular graphic format in the root of the page bundle as
-a featured image.
+This theme considers `featured` or `thumbnail` image in any popular graphic format in the root of the page bundle as a featured image.
 
 Directory structure of this page:
 

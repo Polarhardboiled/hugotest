@@ -1,0 +1,39 @@
+{{ define "header" }}
+{{ partial "header.html" . }}
+{{ end }}
+
+{{ define "main" }}
+<main>
+	{{ if .Content }}
+	<section>
+	{{ .Content }}
+	</section>
+	{{ end }}
+	<hr>
+		{{- range .Data.Pages.GroupByDate "2006" }}
+    <article>
+		<h2>{{ .Key }}</h2>
+		<section>
+		{{- range .Pages }}
+			<aside>
+				<a href="{{ .RelPermalink }}">
+		    	<h3>{{ .Title }}</h3>
+		    	<figure>
+		    	{{ partial "posts/thumb.html" . }}</figure>
+		        <p>{{- .Description -}}</p>
+		        {{- if .PublishDate }}
+		        <p><small>{{ i18n "on" }} <time datetime="{{ .PublishDate }}">{{ .Date.Day }} {{ index site.Data.months_fr (printf "%d" .Date.Month) }} {{ .Date.Year }}</time></small></p>
+		        {{ end }}
+		    </a>
+		    </aside>
+		{{ end }}
+		</section>
+	</article>
+{{ end }}
+</main>
+{{ end }}
+
+{{ define "footer" }}
+{{ partialCached "footer.html" . }}
+{{ end }}
+

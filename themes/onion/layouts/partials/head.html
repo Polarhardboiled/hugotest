@@ -1,0 +1,27 @@
+<title>{{if .IsHome}}{{ .Site.Title }}{{ with .Title }} • {{ . }}{{ end }}{{else}}{{ with .Title }}{{ . }} • {{ end }}{{ .Site.Title }}{{end}}</title>
+
+<meta name="description" content="{{ with .Description }}{{ . }}{{ end }}">
+
+{{ template "_internal/opengraph.html" . }}
+{{ template "_internal/twitter_cards.html" . }}
+{{ template "_internal/schema.html" . }}
+
+{{ if or (fileExists "static/favicon.png") (fileExists "static/favicon.ico") -}}
+<link rel="icon" type="image/png" href="{{ "/favicon.png" | relURL }}">
+{{- end }}
+
+<link rel="stylesheet" href="{{ "/styles/screen.css" | relURL }}" media="all">
+<!-- load non essential style sheets, see https://timkadlec.com/remembers/2020-02-13-when-css-blocks/  -->
+<link rel="stylesheet" href="{{ "/styles/syntax.css" | relURL }}" media="print" onload="this.media='screen'">
+<link rel="stylesheet" href="{{ "/scripts/simple-lightbox/simple-lightbox.min.css" | relURL }}" media="print" onload="this.media='screen'">
+
+{{ range .AlternativeOutputFormats -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+{{- end }}
+{{ if .IsTranslated -}}
+    {{ range .AllTranslations -}}
+    <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .RelPermalink }}" title="{{ .Language.LanguageName }}">
+    {{- end }}
+{{- end }}
+
+{{ hugo.Generator }}

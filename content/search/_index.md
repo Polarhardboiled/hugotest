@@ -1,10 +1,9 @@
 ---
 title: "Recherche"
-searchform: true
+layout: "search"
 menu:
   main:
     Name: Recherche
-    Weight: 40
-    Pre: <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-binoculars" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><title>Recherche</title><path d="M2 0h12v2h-12zM18 0h12v2h-12zM29.75 10h-1.75v-8h-8v8h-8v-8h-8v8h-1.75c-1.238 0-2.25 1.012-2.25 2.25v17.5c0 1.238 1.012 2.25 2.25 2.25h9.5c1.238 0 2.25-1.012 2.25-2.25v-11.75h4v11.75c0 1.238 1.012 2.25 2.25 2.25h9.5c1.238 0 2.25-1.012 2.25-2.25v-17.5c0-1.238-1.012-2.25-2.25-2.25zM10.875 30h-7.75c-0.619 0-1.125-0.45-1.125-1s0.506-1 1.125-1h7.75c0.619 0 1.125 0.45 1.125 1s-0.506 1-1.125 1zM17 16h-2c-0.55 0-1-0.45-1-1s0.45-1 1-1h2c0.55 0 1 0.45 1 1s-0.45 1-1 1zM28.875 30h-7.75c-0.619 0-1.125-0.45-1.125-1s0.506-1 1.125-1h7.75c0.619 0 1.125 0.45 1.125 1s-0.506 1-1.125 1z"></path></svg>
+    Weight: 30
+pre: <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
 ---
-

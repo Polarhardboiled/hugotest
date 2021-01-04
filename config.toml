@@ -1,68 +1,32 @@
 baseURL = "https://polarhardboiled.github.io/hugotest"
-title = "Hugo Test"
-languageCode = "fr-fr"
-paginate = 6
-enableRobotsTXT =  true
-buildDrafts =  false
-buildFuture =  false
-buildExpired =  false
-theme = "papermod"
+languageCode = "fr"
+theme = ["semantic"]
+paginate = 5 # Number of items to show before paginating
+title = "Zylla Hugo Test"
+disqusShortname = "polarhardboiled"   # Change it to your Disqus shortname before using
+DefaultContentLanguage = "fr"         # Theme i18n support
+enableRobotsTXT = true # Suggested, enable robots.txt file
+footnoteReturnLinkContents = "↩" # Provides a nicer footnote return link
 
-[Params]
-  columns = 2
-  themeOptions = ["base","roseate","auburn","beryl"] # select options for site color theme
-  dateFormat = "2 January 2006"
-  dateform        = "2 Jan 2006"
-  dateformShort   = "2 Jan"
-  dateformNum     = "02-01-2006"
-  viewportSize = "widest"
-  enableUiAnimation = true
-  enableBreadcrumb = false
-  summaryShape = "classic"
-  logoText = "Hugo Test"
-  description = "Un Site pour tester Hugo et le theme switch"
-  hideSingleContentsWhenJSDisabled = false
-  minItemsToShowInTagCloud = 1 # Minimum items to show in tag cloud
-  enableSkinChange = true
-  
-  siteBrandFontSize = 1
-  fontUnit = "em"
-  largestFontSize = 2.5
-  smallestFontSize = 1
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
 
-[Params.style]
-    
-    # To Enable Skins change
-    presets = [ "base", "roseate", "auburn", "beryl" ]
+[taxonomies]
+author = "authors"
+category = "categories"
+series = "series"
+tag = "tags"
 
-[outputFormats]
+[params]
+  SEOTitle = "Hugotest | Pour Zylla"
+  description = "Comment tester le SSG Hugo"
+  keyword = ""
+  author = "Zylla" # Optional, controls author name display on posts
+  related_content_limit = 5
+  since = 2008
+  logo = "images/avatar.png"
 
-  [outputFormats.SearchIndex]
-  mediaType = "application/json"
-  baseName = "searchindex"
-  isPlainText = true
-  notAlternative = true
-
-[outputs]
-home = [
-  "HTML",
-  "RSS",
-  "JSON",
-  "SearchIndex"
-]
-
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      hardWraps = true
-      unsafe = true
-      xHTML = true
-  [markup.highlight]
-    codeFences = true
-    lineNos = true
-    lineNumbersInTable = true
-    noClasses = false
-  [markup.tableOfContents]
-    endLevel = 3
-    ordered = false
-    startLevel = 2
+[markup.goldmark.renderer]
+  unsafe = true # Optional, allows HTML inside your CommonMark content

@@ -1,0 +1,9 @@
+{{ if .Resources.GetMatch "header" }}
+{{ $image400 := (.Resources.GetMatch "header").Fill "400x300" }}
+	<figure><img
+	itemprop="thumbnailUrl"
+	class=""
+	src="{{ $image400.RelPermalink }}"
+	alt="{{ .Name | plainify }}" 
+	></figure>
+{{ end }}

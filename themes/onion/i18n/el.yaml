@@ -1,0 +1,105 @@
+## UI
+filter-reset:
+  other: Όλα
+
+show-more:
+  other: Περισσότερα
+
+next:
+  other: Επόμενο
+
+previous:
+  other: Προηγούμενο
+
+search:
+  other: Αναζήτηση
+
+
+## social sharing
+
+share:
+  other: Μοιράσου
+
+share-twitter:
+  other: Twitter
+
+share-facebook:
+  other: Facebook
+
+share-email:
+  other: Email
+
+
+## post details
+
+description:
+  other: Σύνοψη
+
+license:
+  other: Άδεια χρήσης
+
+tags:
+  other: Ετικέτες
+
+rating:
+  other: Βαθμολογία
+
+contents:
+  other: Περιεχόμενα
+
+notice-outdated:
+  other: χρόνια πριν
+
+created-date:
+  other: Παραγωγή
+
+read-date:
+  other: Read
+
+publish-date:
+  other: Δημοσίευση
+
+modified-date:
+  other: Ενημέρωση
+
+post-details:
+  other: Σχετικά
+
+post-meta:
+  other: Meta
+
+in-series:
+  other: Σε αυτή τη σειρά
+
+publication-details:
+  other: Στοιχεία έκδοσης
+
+title:
+  other: Τίτλος
+
+author:
+  other: Συγγραφέας
+
+published:
+  other: Εκδόση
+
+publisher:
+  other: Εκδότης
+
+pages:
+  other: Σελίδες
+
+
+## github-content
+
+hosted-on-github:
+  other: Στο GitHub
+
+github-repository:
+  other: Αποθετήριο
+
+github-license:
+  other: Άδεια χρήσης
+
+github-last-pushed:
+  other: Τελευταία ενημέρωση

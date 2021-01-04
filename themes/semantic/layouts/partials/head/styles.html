@@ -1,0 +1,2 @@
+{{ $css := resources.Match "css/*.css" | resources.Concat "main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}" media="all">
