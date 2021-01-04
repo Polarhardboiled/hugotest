@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /
+
 Sitemap: https://polarhardboiled.github.io/hugotest/sitemap.xml
