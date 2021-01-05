@@ -5,26 +5,23 @@
         {{ if .Site.Menus.main }}
         {{ range .Site.Menus.main }}
         {{ if .HasChildren }}
-        <li><a itemprop="url" href="{{ .URL }}">
+        <li><a itemprop="url" href="{{ .URL }}" data-tooltip="{{ .Name }}">
             {{ .Pre }}
-            {{ .Name }}
             {{ .Post }}
         </a>
         <ul>
             {{ range .Children }}
             <!-- TODO: style children different then parents-->
-            <li><a href="{{ .URL }}">
+            <li><a href="{{ .URL }}" data-tooltip="{{ .Name }}">
                 {{ .Pre }}
-                {{ .Name }}
                 {{ .Post }}
             </a></li>
             {{ end }}
         </ul>
             </li>
             {{ else }}
-            <li><a href="{{ .URL }}">
+            <li><a href="{{ .URL }}" data-tooltip="{{ .Name }}">
                 {{ .Pre }}
-                {{ .Name }}
                 {{ .Post }}
             </a></li>
             {{ end }}
@@ -32,7 +29,7 @@
             {{ else }}
             <!-- use default menu -->
             {{ if not $isHome }}
-            <li><a href="{{ "" | relLangURL }}">{{ i18n "nav_main" . }}</a></li>
+            <li><a href="{{ "" | relLangURL }}" data-tooltip="{{ .Name }}">{{ i18n "nav_main" . }}</a></li>
             {{ end }}
 {{ end }}
         </ul>

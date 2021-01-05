@@ -19,6 +19,7 @@
 			<aside>
 			<a href="{{.Permalink}}">
 		    	<h3>{{ .Title }}</h3>
+		    	{{ partial "posts/thumb.html" . }}
 		        <p>{{- .Description -}}</p>
 		        {{- if .PublishDate }}
 		        <p><small>{{ i18n "on" }} <time datetime="{{ .PublishDate }}">{{ .Date.Day }} {{ index site.Data.months_fr (printf "%d" .Date.Month) }} {{ .Date.Year }}</time></small></p>

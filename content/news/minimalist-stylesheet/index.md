@@ -14,9 +14,6 @@ resources:
     name: header
 ---
 
-[Download HTML](https://andybrewer.github.io/mvp/mvp.html)
-[Download MVP.css (8kb)](https://andybrewer.github.io/mvp/mvp.css)
-
 <p><a download="mvp.html" href="https://andybrewer.github.io/mvp/mvp.html" target="_blank"><i>Download HTML &nearr;</i></a> <a download="mvp.css" href="https://andybrewer.github.io/mvp/mvp.css" target="_blank"><b>Download MVP.css (8kb) &nearr;</b></a></p>
 <br><br>
 <p><sup>PRO TIP</sup> Add this code to a new HTML file:<br><br><code>&lt;link rel="stylesheet" href="https://unpkg.com/mvp.css"&gt;</code></p>
