@@ -7,13 +7,15 @@
         {{ if .HasChildren }}
         <li><a itemprop="url" href="{{ .URL }}" data-tooltip="{{ .Name }}">
             {{ .Pre }}
+            {{ .Name }}
             {{ .Post }}
         </a>
         <ul>
             {{ range .Children }}
             <!-- TODO: style children different then parents-->
-            <li><a href="{{ .URL }}" data-tooltip="{{ .Name }}">
+            <li><a href="{{ .URL }}">
                 {{ .Pre }}
+                {{ .Name }}
                 {{ .Post }}
             </a></li>
             {{ end }}
@@ -22,6 +24,7 @@
             {{ else }}
             <li><a href="{{ .URL }}" data-tooltip="{{ .Name }}">
                 {{ .Pre }}
+                {{ .Name }}
                 {{ .Post }}
             </a></li>
             {{ end }}

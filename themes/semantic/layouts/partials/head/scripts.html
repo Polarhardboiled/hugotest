@@ -1,0 +1,9 @@
+{{ if $.Param "searchform" -}}
+{{ $flexsearch := resources.Get "js/lib/flexsearch.min.js" | fingerprint -}}
+<script src="{{ $flexsearch.RelPermalink }}" defer></script>
+{{ $search := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" . | minify | fingerprint -}}
+<script src="{{ $search.RelPermalink }}" defer></script>
+{{ else -}}
+{{ $progressiveimagescript := resources.Get "js/progressiveimage.js" | fingerprint -}}
+<script defer src="{{ $progressiveimagescript.RelPermalink }}"></script>
+{{ end }}
