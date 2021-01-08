@@ -24,7 +24,9 @@ ErrorDocument 404 /404.html
 Header always set X-FRAME-OPTIONS "DENY"
 Header always set X-XSS-Protection "1; mode=block"
 Header always set X-Content-Type-Options "nosniff"
-<FilesMatch "\.(ico|jpe?g|png|gif|swf|woff2|css)$">
+<FilesMatch "\.(ico|jpe?g|png|gif|swf|woff2)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch><FilesMatch "\.(css)$">
         Header set Cache-Control "max-age=31536000, public"
     </FilesMatch>
     <FilesMatch "\.(js)$">
