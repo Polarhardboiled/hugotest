@@ -1,0 +1,29 @@
+// Colors
+$background-color: #f9f4ed;
+$default-color: #4C262A;
+$default-shade: rgba(255, 255, 255, 0.1);
+$default-tint: #aaa;
+$grey-1: #979797;
+$grey-2: #e5e5e5;
+$grey-3: #f9f9f9;
+$white: #fff;
+$shadow-color: rgba(0, 0, 0, .2);
+$code-color: #bf616a;
+
+// Fonts
+$serif-primary: 'bitter', 'Times New Roman', Times, serif;
+$serif-secondary: "Trebuchet MS", Verdana, "Verdana Ref", "Segoe UI", Candara, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+$sans-serif: 'dosis', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+$monospaced: Menlo, Monaco, monospace;
+
+@mixin box-sizing($type: border-box) {
+  -webkit-box-sizing: $type;
+     -moz-box-sizing: $type;
+          box-sizing: $type;
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+     -moz-transition: $args;
+          transition: $args;
+}

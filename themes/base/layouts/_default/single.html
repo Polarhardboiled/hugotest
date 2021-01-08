@@ -1,0 +1,58 @@
+{{ define "title" -}}
+{{ .Title }} | {{ .Site.Title }}
+{{- end }}
+{{ define "header" }}
+{{ end }}
+{{ define "main" }}
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  {{ template "_internal/schema.html" . }}
+  <h1 class="post-title" itemprop="headline">{{ .Title }}</h1>
+  {{ if .Description }}
+  <h2 class="post-intro" itemprop="description">{{ .Description }}</h2>
+  {{ end }}
+  <div class="post-line"></div>
+  <hr>
+
+  {{ if .Resources.GetMatch "header" }}
+  {{ $image600 := (.Resources.GetMatch "header").Fill "600x338 q60 Center" }}
+  {{ $image900 := (.Resources.GetMatch "header").Fill "900x506 q70 Center" }}
+  {{ $image1200 := (.Resources.GetMatch "header").Fill "1200x675 q80 Center" }}
+  {{ $image1600 := (.Resources.GetMatch "header").Fill "1600x900 q90 Center" }}
+  <img
+  alt="{{ .Name | plainify }}"
+  class="lazyload blur-up"
+  src="{{ $image900.RelPermalink }}"
+  data-sizes="auto"
+  data-src="{{ $image1200.RelPermalink }}"
+  data-srcset="{{ $image600.RelPermalink }} 600w, {{ $image900.RelPermalink }} 900w, {{ $image1200.RelPermalink }} 1200w, {{ $image1600.RelPermalink }} 1600w"
+  >
+  {{ end }}
+  
+<div class="post-info">
+      <span>{{ i18n "writtenBy" }}
+      {{- if .Params.Author }}
+           {{ .Params.Author }}
+      {{- else }}
+           {{ .Site.Params.Author }}
+      {{- end }}</span>
+      {{- if .PublishDate }}<span>{{ i18n "on" }} <time datetime="{{ .PublishDate }}">{{ .Date.Day }} {{ index site.Data.months_fr (printf "%d" .Date.Month) }} {{ .Date.Year }}
+          </time></span>
+      {{- end }}
+  </div>
+  {{ partial "toc-maybe" . }}
+
+  <div itemprop="articleBody">
+    {{ .Content }}
+  </div>
+
+  <footer>
+    <hr>
+    {{ partial "post/byline" . }}
+    {{ partial "post/related-content" . }}
+    {{ partial "pagination" . }}
+  </footer>
+</article>
+{{ end }}
+{{ define "footer" }}
+{{ partial "powered-by" . }}
+{{ end }}

@@ -1,0 +1,10 @@
+	<div class="pagination">
+		{{- if .PrevPage }}
+		<a href="{{ .PrevPage.RelPermalink }}" class="left arrow">&#8592;<span>{{ .PrevPage.Title }}</span></a>
+		{{- end }}
+		{{- if .NextPage }}
+		<a href="{{ .NextPage.RelPermalink }}" class="right arrow"><span>{{ .NextPage.Title }}</span>&#8594;</a>
+		{{- end }}
+
+		<a href="#" class="icon top">Top</a>
+	</div>

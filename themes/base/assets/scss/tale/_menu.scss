@@ -1,0 +1,104 @@
+.DrawerMenu {
+  position: fixed;
+  z-index: 99;
+  width: 90%;
+  max-width: 36rem;
+  top: 0;
+  bottom: 0;
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+  transition: -webkit-transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+  transition: transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+  transition: transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1), -webkit-transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+#DrawerMenuTrigger:checked~.DrawerMenu {
+  -webkit-transform: none;
+  transform: none;
+}
+
+.MenuContainer {
+  contain: content;
+  background-color: $code-color;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+#DrawerMenuTrigger:checked~.DrawerMenu .Menu {
+  -webkit-transform: none;
+  transform: none;
+  opacity: 1;
+  -webkit-transition-delay: 300ms;
+  transition-delay: 300ms;
+}
+
+.Menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: column wrap;
+  flex-flow: column wrap;
+  -webkit-transform: translateY(-30%);
+  transform: translateY(-30%);
+  opacity: 0;
+  -webkit-transition: all 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  transition: all 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  -webkit-transition-delay: 0;
+  transition-delay: 0
+}
+
+.MenuOverlay {
+  display: block;
+}
+
+.MenuOverlay.close {
+  color: $white;
+  padding: 1rem;
+}
+
+.nav-menu {
+  border-top: 0.1rem solid $default-shade;
+  margin: 0;
+  position: relative;
+
+  a {
+    float: left;
+    font-family: $sans-serif;
+    font-weight: 700;
+    width: 50%;
+    height: 10rem;
+    text-align: center;
+    border-bottom: 1px solid $default-shade;
+    font-size: 2rem;
+    padding: 2rem;
+    color: $background-color;
+    -webkit-transition: background .2s ease-in-out;
+    transition: background .2s ease-in-out;
+  }
+
+  a:nth-child(odd) {
+    border-right: 1px solid $default-shade;
+  }
+
+  a:hover, .active {
+    background: $default-shade;
+    color: $grey-2;
+  }
+  a i {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-menu a {
+    font-size: 1.2rem;
+  }
+  .nav-menu a i {
+    font-size: 2.5rem;
+  }
+}

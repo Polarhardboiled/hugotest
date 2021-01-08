@@ -1,0 +1,12 @@
+<p>
+  {{ with .Params.categories }}
+  <svg style="margin-bottom:-10px" viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+    <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/></svg> {{ delimit (apply (apply (sort .) "partial" "post/category-link.html" ".") "chomp" ".") " - " " and " }}
+  {{ end }}
+  {{ with .Params.tags }}
+  <svg style="margin-bottom:-10px" viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+    <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/><line x1="7" y1="7" x2="7" y2="7"/></svg>
+    {{ delimit (apply (apply (sort .) "partial" "post/tag-link.html" ".") "chomp" ".") " - " " - " }}
+  {{ end }}
+</p>
+

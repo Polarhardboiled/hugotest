@@ -1,0 +1,9 @@
+    <!-- Scripts -->
+    {{ $import := resources.Get "/js/vendor/fetch-inject.min.js" }}
+    {{ $baseof := resources.Get "/js/baseof.js" | resources.ExecuteAsTemplate "baseof.js" . }}
+    <script integrity="{{ ($import | resources.Fingerprint "sha512").Data.Integrity }}">
+      {{- $import.Content | safeJS -}}
+    </script>
+    <script integrity="{{ ($baseof | resources.Fingerprint "sha512").Data.Integrity }}">
+      {{- $baseof.Content | safeJS -}}
+    </script>

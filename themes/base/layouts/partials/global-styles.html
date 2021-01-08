@@ -1,0 +1,6 @@
+{{ $fonts := resources.Get "fonts.css" | fingerprint }}
+{{ $icons := resources.Get "icons.css" | fingerprint }}
+{{ $base := resources.Get "scss/base.scss" | toCSS | fingerprint }}
+{{ $styles := slice $fonts $icons $base | resources.Concat "styles.css" | minify | fingerprint }}
+
+<link rel="stylesheet" href="{{ $styles.Permalink }}">

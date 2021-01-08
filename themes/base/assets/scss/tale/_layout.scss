@@ -1,0 +1,50 @@
+.container {
+  margin: 0 auto;
+  max-width: 40rem;
+}
+
+main,
+footer,
+.nav-container {
+  display: block;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.nav {
+  overflow: hidden;
+
+  &-container {
+    margin: 1rem auto;
+    position: relative;
+  }
+
+  &-title {
+    @include transition(all .2s ease-out);
+    color: $default-color;
+    border: 0.4rem solid $default-color;
+    border-radius: 0.4rem;
+    font-style: italic;
+    display: inline-block;
+    margin: 0;
+    padding: .4rem;
+
+    &:hover,
+    &:focus {
+      color: $code-color;
+      background: $white;
+      border: 0.4rem solid $code-color;
+    }
+  }
+}
+
+footer {
+  font-family: $serif-secondary;
+  padding: .5rem 0;
+  text-align: center;
+
+  span {
+    color: $default-color;
+    font-size: .8rem;
+  }
+}

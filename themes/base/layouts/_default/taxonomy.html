@@ -1,0 +1,14 @@
+{{ define "header" }}
+{{ end }}
+{{ define "main" }}
+  <header>
+    <h1>{{ .Title }}</h1>
+  </header>
+  {{ range (.Paginate .Pages).Pages }}
+    {{ partial "page-summary" . }}
+  {{ end }}
+{{ end }}
+{{ define "footer" }}
+  {{ partial "pagination" . }}
+  {{ partial "powered-by" . }}
+{{ end }}

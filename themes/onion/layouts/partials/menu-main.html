@@ -3,20 +3,30 @@
 	<ul>
 		{{- if site.Menus.main -}}
 			{{- range site.Menus.main -}}
-				<li class="{{ if .HasChildren }}has-children{{ end }}">{{ .Pre }}<a href="{{ .URL }}">{{ (i18n .Name) }}</a>{{ .Post }}{{ if .HasChildren -}}
+				{{ if .HasChildren }}
+				<li class="has-children"><a itemprop="url" href="{{ .URL }}" data-tooltip="{{ .Name }}">
+				{{ .Pre }}
+	            {{ .Name }}
+	            {{ .Post }}
+	        	</a>
 					<ul>
 						{{- range .Children -}}
-							<li><a href="{{ .URL }}">{{ .Pre }}{{ (i18n .Name) }}{{ .Post }}</a></li>
+							<li><a href="{{ .URL }}">
+				                {{ .Pre }}
+				                {{ .Name }}
+				                {{ .Post }}
+				            </a></li>
 						{{- end -}}
 					</ul>
-				{{- end -}}</li>
-			{{- end -}}
+				</li>
 		{{- else -}}
-			{{- range site.RegularPages -}}
-				{{ if and (eq .Section "") (ne .Params.menu_hide true) -}}
-				<li><a href="{{ .RelPermalink }}">{{ with .Title }}{{ . | title }}{{ else }}{{ .File.ContentBaseName | title }}{{ end }}</a></li>
-				{{- end }}
-			{{- end -}}
+			<li><a href="{{ .URL }}" data-tooltip="{{ .Name }}">
+                {{ .Pre }}
+                {{ .Name }}
+                {{ .Post }}
+            </a></li>
+            {{ end }}
+            {{ end }}
 		{{- end -}}
 	</ul>
 </nav>

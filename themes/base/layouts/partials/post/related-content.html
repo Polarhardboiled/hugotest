@@ -1,0 +1,15 @@
+{{ $num_to_show := .Site.Params.related_content_limit | default 5 }}
+{{ $related := .Site.RegularPages.Related . | first $num_to_show }}
+{{ with $related }}
+<div class="catalogue">
+    <h2 class="catalogue-intro">Encore Plus</h2>
+      {{ range . }}
+        <div class="catalogue-item"><a href="{{ $.Permalink }}">
+          {{ if .Resources.GetMatch "header" }}
+          {{ $image100 := (.Resources.GetMatch "header").Fill "100x100 q70 Center" }}
+          <img class="photo lazyload blur-up" data-src="{{ $image100.RelPermalink }}" alt="{{ .Name | plainify }}" />
+          {{ end }}
+          <h1 itemprop="name" class="catalogue-title">{{ .Title }}</h1>
+          {{ end }}
+        </div>
+{{ end }}

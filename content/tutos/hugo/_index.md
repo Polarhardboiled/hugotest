@@ -6,4 +6,7 @@ menu:
     title: "comment utiliser Hugo"
     parent: "Blog"
     weight: 140
+resources:
+  - src: hugo.jpg
+    name: header
 ---

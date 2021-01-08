@@ -1,0 +1,152 @@
+* {
+  @include box-sizing;
+  line-height: 1.5;
+}
+
+html,
+body {
+  background-color: $background-color;
+  color: $default-color;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: $serif-secondary;
+  font-size: 16px;
+  overflow-y: scroll;
+
+  @media (min-width: 600px) {
+    font-size: 22px;
+  }
+}
+
+body {
+  -webkit-text-size-adjust: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $default-color;
+  font-family: $sans-serif;
+  line-height: normal;
+}
+
+hr {
+  border: 0;
+  height: 0.4rem;
+  background: $code-color;
+  display: block;
+  clear: both;
+  margin: 1rem;
+  padding: 0;
+  border-radius: 0.25rem;
+}
+a {
+  text-decoration: none;
+  color: $code-color;
+  
+  &:hover {
+    text-decoration: none;
+  }
+}
+p a {
+  color: $code-color;
+  padding: .2rem;
+  text-decoration: none;
+  background-image: linear-gradient($code-color 0%, $code-color 100%);
+  background-repeat: repeat-y;
+  background-size: 0% 0rem;
+  background-position: 0 65%;
+  transition: 600ms ease;
+  &:hover {
+    text-decoration: none;
+    color: $white;
+    background-image: linear-gradient($code-color 0%, $code-color 100%);
+    background-size: 100% 1rem;
+  }
+}
+
+.small {
+  font-size: .5rem;
+}
+
+blockquote {
+  border-left: .25rem solid $grey-2;
+  color: $grey-1;
+  margin: .8rem 0;
+  padding: .5rem 1rem;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 600px) {
+    padding: 0 5rem 0 1.25rem;
+  }
+}
+
+img {
+  display: block;
+  margin: 0 0 1rem;
+  max-width: 100%;
+}
+
+td {
+  vertical-align: top;
+}
+
+.icon {
+  display: inline-block;
+  text-align: center;
+  height: 3rem;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  line-height: 1.25rem;
+  border-radius: 0.25rem;
+  border: 0.45rem solid transparent;
+
+  &:hover {
+    color: $code-color;
+    background: $white;
+  }
+  &-menu, &-cross {
+    width: 3rem;
+    float: right;
+  }
+}
+
+.blur-up {
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+  transition: filter 400ms, -webkit-filter 400ms;
+
+  &.lazyloaded {
+    margin: .1rem;
+    -webkit-filter: blur(0);
+    filter: blur(0);
+  }
+}
+
+.photo {
+  float: right;
+  overflow: hidden;
+  position: relative;
+  border-radius: 0.25rem;
+  height: 100%;
+  display: block;
+  background: $default-color;
+  border: 0.25rem solid $default-color;
+}
+
+@media (max-width: 500px) {
+  .photo {
+      width: 100%;
+      float: clear;
+  }
+}

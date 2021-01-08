@@ -1,0 +1,19 @@
+{{ define "header" }}
+{{ end }}
+{{ define "main" }}
+<header>
+    <h2 class="post-title">{{ .Title }}</h2>
+    <h3 class="post-intro">{{- .Description | markdownify -}}</h3>
+    <p>{{ .Content }}</p>
+    <hr>
+</header>
+<div class="catalogue">
+    {{ range (.Paginate .Pages).Pages }}
+    {{ partial "page-summary" . }}
+    {{ end }}
+</div>
+{{ end }}
+{{ define "footer" }}
+{{ partial "pagination" . }}
+{{ partial "powered-by" . }}
+{{ end }}

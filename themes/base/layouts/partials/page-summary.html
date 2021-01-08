@@ -1,0 +1,26 @@
+<article class="catalogue-item" itemscope itemtype="http://schema.org/CreativeWork">
+  <a href="{{ $.Permalink }}">
+      {{ if .Resources.GetMatch "header" }}
+      {{ $image200 := (.Resources.GetMatch "header").Fill "200x200 Center" }}
+      <img
+      class="photo lazyload blur-up"
+      data-src="{{ $image200.RelPermalink }}"
+      alt="{{ .Name | plainify }}" 
+      >
+      {{ end }}
+
+      {{- if .PublishDate }}<span class="catalogue-time">{{ i18n "on" }} <time datetime="{{ .PublishDate }}">{{ .Date.Day }} {{ index site.Data.months_fr (printf "%d" .Date.Month) }} {{ .Date.Year }}
+      </time></span>
+      {{- end }}
+      <h1 itemprop="name" class="catalogue-title">{{ .Title }}</h1>
+      <div class="catalogue-line"></div>
+      
+      <h3 class="catalogue-intro">{{- .Description -}}</h3>
+  
+  <meta itemprop="inLanguage" content="{{ .Site.LanguageCode }}">
+  <meta itemprop="datePublished" content="{{ dateFormat "2006-01-02T15:04:05-07:00" (default .Date (.PublishDate)) }}">
+  <meta itemprop="dateModified" content="{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" }}">
+  {{ with .Params.images }}
+  <meta itemprop="image" content="{{ index . 0 }}">
+  {{ end }}
+  </a></article>

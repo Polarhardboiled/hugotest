@@ -1,0 +1,72 @@
+.grid {
+  position: relative;
+  margin: 1rem auto;
+  display: grid;
+  grid-template-columns: minmax(5px, 300px);
+  grid-template-rows: minmax(1fr, 300px);
+  grid-auto-flow: dense;
+  grid-row-gap: 0;
+  grid-column-gap: 0;
+
+  figure {
+    margin: 0 .1rem;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    opacity: 1;
+    transition: .2s;
+    /* Fix for Safari 10 */
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      filter: url(data:image/svg+xml;utf8;base64,PHN2ZyB4bWxucz0iXCdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Z1wnIj48ZmlsdGVyIGlkPSJcJ2dyYXlzY2FsZVwnIj48ZmVDb2xvck1hdHJpeCB0eXBlPSJcJ21hdHJpeFwnIiB2YWx1ZXM9IlwnMC4zMzMzIi8+PC9maWx0ZXI+PC9zdmc+I2dyYXlzY2FsZQ==);
+      filter: $grey-1;
+      -webkit-filter: grayscale(100%);
+      -webkit-transition: all .6s ease;
+      -webkit-backface-visibility: hidden
+    }
+
+    &:nth-child(3) {
+      grid-column-end: span 2;
+      grid-row-end: span 2;
+    }
+
+    &:nth-child(4) {
+      grid-column-end: span 2;
+      grid-row-end: span 2;
+    }
+
+    &:nth-child(5) {
+      grid-column-end: span 3;
+      grid-row-end: span 3;
+    }
+
+    &:nth-child(8) {
+      grid-column-end: span 2;
+      grid-row-end: span 3;
+    }
+
+    &:nth-child(11) {
+      grid-column-end: span 3;
+      grid-row-end: span 3;
+    }
+
+    img {
+      padding: 0;
+      vertical-align: middle;
+      height: auto;
+      width: 100%;
+      height: 100%;
+      -o-object-fit: cover;
+      object-fit: cover;
+      transition: .2s;
+      flex-grow: 1;
+    }
+  }
+}
+
+figure:hover img {
+  transform: scale(1.2);
+  overflow: hidden;
+}

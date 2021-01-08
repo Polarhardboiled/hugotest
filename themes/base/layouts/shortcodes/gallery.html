@@ -1,0 +1,15 @@
+{{ with $.Get "title" }}<h4>{{ . }}</h4>{{ end }}
+<h6>{{ with .Inner }}{{ . | markdownify }}{{ end }}</h6>
+<div class="grid">
+  {{ range $image := (.Page.Resources.ByType "image").Match (printf "%s*" (.Get "src")) }}
+  {{ $src := $image }}
+  {{ $lqipsrc := .Resize "300x" }}
+    <figure>
+    	<img
+    	class="lazyload blur-up"
+    	data-src="{{ $lqipsrc.RelPermalink }}"
+    	alt="{{ .Name }}"
+    	>
+    </figure>
+  {{ end }}
+</div>

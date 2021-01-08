@@ -1,0 +1,16 @@
+{{ define "title" -}}
+  {{ .Site.Title }}
+{{- end }}
+{{ define "header" }}
+{{ end }}
+{{ define "main" }}
+	<div class="catalogue">
+		{{ range (.Paginate .Site.RegularPages).Pages }}
+		{{ partial "page-summary.html" . }}
+		{{ end }}
+	</div>
+	{{ end }}
+	{{ define "footer" }}
+	  {{ partial "pagination.html" . }}
+	  {{ partial "powered-by.html" . }}
+	{{ end }}
