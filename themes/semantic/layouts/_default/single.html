@@ -3,12 +3,14 @@
 {{ end }}
 
 {{ define "main" }}
-<main>
-	{{ if .Content }}
-<article>
-	{{ .Content }}
-</article>
-	{{ end }}
+<main id="main" tabindex="-1">
+<div class="container">
+    <article>
+      	<section class="container">
+		{{ if .Content }}{{ .Content }}{{ end }}
+		</section>
+	</article>
+</div>
 </main>
 {{ end }}
 

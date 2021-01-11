@@ -7,31 +7,37 @@
 {{ end }}
 
 {{ define "main" }}
-<main>
-	{{ if .Content }}
-	{{ .Content }}
-	{{ end }}
-	<hr>
-    <section>
+<main id="main" tabindex="-1">
+<div class="container">
+    <article>
+		{{ if .Content }}
+	    <section class="container">
+		{{ .Content }}
+		</section>
+		{{ end }}
+	    <section class="container">
 		<header>
+  		<div class="container">
 		<h2>Les Dernières News</h2>
 		{{ if .Description }}
 		<p>{{ .Description }}</p>
 	    {{ end }}
-		</header>
-		  {{ range first 4 .Site.RegularPages.ByDate.Reverse }}
+		</div>
+			</header>
 			<aside>
-			<a href="{{.Permalink}}">
-		    	<h3>{{ .Title }}</h3>
-		    	{{ partial "posts/thumb.html" . }}
-		        <p>{{- .Description -}}</p>
+			 	<div class="container">
+			<ul class="features">
+		  {{ range first 4 .Site.RegularPages.ByDate.Reverse }}
+			<li><span><a href="{{.Permalink}}">
+		    	<h3>{{ partial "posts/thumb.html" . }}{{ .Title }}</h3></a>
+		        {{- .Description -}}
 		        {{- if .PublishDate }}
-		        <p><small>{{ i18n "on" }} <time datetime="{{ .PublishDate }}">{{ .Date.Day }} {{ index site.Data.months_fr (printf "%d" .Date.Month) }} {{ .Date.Year }}</time></small></p>
-		        {{ end }}
-		    </a>
-		    </aside>
+		        <p><small>{{ i18n "on" }} <time datetime="{{ .PublishDate }}">{{ .Date.Day }} {{ index site.Data.months_fr (printf "%d" .Date.Month) }} {{ .Date.Year }}</time></small></p>{{ end }}
+		    </a></li>
 		{{ end }}
-	</section>
+		    </ul>
+	</div>
+</aside>
 </main>
 {{ end }}
 

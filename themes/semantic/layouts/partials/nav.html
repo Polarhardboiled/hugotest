@@ -1,6 +1,6 @@
 <nav>
 	{{ $isHome := .Page.IsHome }}
-    <a href="{{.Site.BaseURL}}" accesskey="h"><img alt="{{ .Site.Title }}" src="{{ .Site.Params.logo | absURL }}" height="70"></a>
+    <!--<a href="{{.Site.BaseURL}}" accesskey="h"><img alt="{{ .Site.Title }}" src="{{ .Site.Params.logo | absURL }}" height="70"></a> -->
     <ul>
         {{ if .Site.Menus.main }}
         {{ range .Site.Menus.main }}
@@ -13,7 +13,7 @@
         <ul>
             {{ range .Children }}
             <!-- TODO: style children different then parents-->
-            <li><a href="{{ .URL }}">
+            <li class="children"><a href="{{ .URL }}">
                 {{ .Pre }}
                 {{ .Name }}
                 {{ .Post }}

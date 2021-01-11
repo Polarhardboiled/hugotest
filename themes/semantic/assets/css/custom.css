@@ -1,4 +1,3 @@
-
 :root {
 	--font-family: 'Alegreya Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     --font-mono: 'Lobster', sans-serif;
@@ -15,6 +14,15 @@ h5,
 h6 {
     font-family: var(--font-mono);
 }
-small {
-	filter: brightness(0.8);
+
+code,
+samp {
+	color: var(--color-text-secondary);
+}
+
+svg.icon {
+	display: none;
+}
+.children {
+	display: none;
 }

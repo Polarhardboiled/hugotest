@@ -3,32 +3,34 @@
 {{ end }}
 
 {{ define "main" }}
-<main>
-	{{ if .Content }}
-	<section>
-	{{ .Content }}
-	</section>
-	{{ end }}
-	<hr>
-		{{- range .Data.Pages.GroupByDate "2006" }}
+<main id="main" tabindex="-1">
+	<div class="container">
     <article>
+		{{ if .Content }}
+	    <section class="container">
+		{{ .Content }}
+		</section>
+		{{ end }}
+	<hr>
+	{{- range .Data.Pages.GroupByDate "2006" }}
+    	<section class="container">
 		<h2>{{ .Key }}</h2>
-		<section>
+    	<section class="container">
+			<ul class="features">
 		{{- range .Pages }}
-			<aside>
-				<a href="{{ .RelPermalink }}">
+				<li><a href="{{ .RelPermalink }}">
 		    	<h3>{{ .Title }}</h3>
 		    	{{ partial "posts/thumb.html" . }}
 		        <p>{{- .Description -}}</p>
 		        {{- if .PublishDate }}
 		        <p><small>{{ i18n "on" }} <time datetime="{{ .PublishDate }}">{{ .Date.Day }} {{ index site.Data.months_fr (printf "%d" .Date.Month) }} {{ .Date.Year }}</time></small></p>
-		        {{ end }}
-		    </a>
-		    </aside>
+		        {{ end }}</a></li>
 		{{ end }}
+		</ul>
 		</section>
-	</article>
+		</section>
 {{ end }}
+	</article>
 </main>
 {{ end }}
 

@@ -1,6 +1,25 @@
-<footer>
-        <hr>
-        <p>
-            <small>{{ with .Site.Params.since }}{{ . }} -  {{ end }}{{ now.Format "2006" }}</small>
-        </p>
+<footer class="page-footer">
+      <div class="container">
+        <p>Le site <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a> est réalisé et maintenu par <a href="https://twitter.com/xx">{{ .Site.Params.authorName }}</a> &copy; {{ with .Site.Params.since }}{{ . }} -  {{ end }}{{ now.Format "2006" }} </p>
+        <ul>
+      <li><a href="https://twitter.com/xx" class="link-twittercontact">Contact sur Twitter</a></li>
+      <li>
+        <a href="{{ .Site.Params.repo }}" class="link-github"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 32 32"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"
+            ></path>
+          </svg>Star on Github</a>
+      </li>
+      <li><a href="/rss" class="link-rss">RSS Feed</a></li>
+    </ul>
+    <p>Fait main avec du HTML et CSS semantiques et accessibles, <strong><a href="">{{ .Site.Title }}</a> </strong> est propulsé par <a href="https://gohugo.io">Hugo</a> et hébergé sur <a href="https://netlify.com">Netlify</a>
+    </p>
+
+    </div>
     </footer>

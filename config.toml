@@ -23,10 +23,11 @@ tag = "tags"
   SEOTitle = "Hugotest | Pour Zylla"
   description = "Comment tester le SSG Hugo"
   keyword = ""
-  #author = "Zylla" # Optional, controls author name display on posts
+  authorName = "Zylla" # Optional, controls author name display on posts
   related_content_limit = 5
   since = 2008
-  logo = "images/avatar.png"
+  logo = "images/avatar.webp"
+  repo = "https://github.com/Polarhardboiled"
 
 [markup.goldmark.renderer]
   unsafe = true # Optional, allows HTML inside your CommonMark content
